@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { Typography, TextField, Button, Box } from '@material-ui/core';
 import { Search as SearchIcon } from '@material-ui/icons';
-import { useSelector } from 'react-redux';
-import { getWeatherData } from '../../redux/selectors';
-
 import './WeatherSearch.css';
 
 type PropsType = {

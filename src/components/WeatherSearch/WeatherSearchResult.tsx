@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { getWeatherData } from '../../redux/selectors';
-import { Button } from '@material-ui/core';
 import WeatherIcon from './WeatherIcon';
 import { ReactComponent as HighIcon } from '../../assets/high-icon.svg';
 import { ReactComponent as HumidityIcon } from '../../assets/humidity-icon.svg';
@@ -12,48 +11,45 @@ import { ReactComponent as WindIcon } from '../../assets/wind-icon.svg';
 import './WeatherSearchResult.css';
 
 type PropsType = {
-    weather: object | null
+    weather: any | null
 };
 
 export const WeatherSearchResult: React.FC<PropsType> = (props) => {
     const weather = useSelector(getWeatherData);
 
-    const onClick = () => {
-        console.log(weather);
-    };
+    if (!weather) {
+        return <></>;
+    }
 
     return (
         <div className="weather-wrapper">
-            {/* <Button onClick={onClick}>
-                Test btn
-            </Button> */}
             <div className="weather-container">
                 <div className="weather-main">
-                    <h5>Minsk</h5>
+                    <h5>{weather.name}</h5>
                     <div style={{ display: 'flex' }}>
-                        <WeatherIcon code={800} big />
+                        <WeatherIcon code={weather.weather.id} big />
                         <span>
-                            17
+                            {weather.main.temp}
                             <sup>&deg;</sup>
                         </span>
                     </div>
-                    <h6>Test information...</h6>
+                    <h6>{weather.weather.description}</h6>
                 </div>
 
                 <div className="weather-additional">
                     <div className="weather-feels-like">
-                        Feels like 16
+                        Feels like {weather.main.feels_like}
                         <sup>&deg;</sup>
                     </div>
                     <div className="weather-highlow-container">
                         <div className="weather-degree">
                             <HighIcon />
-                            17
+                            {weather.main.temp_max}
                             <sup>&deg;</sup>
                         </div>
                         <div className="weather-degree">
                             <LowIcon />
-                            17
+                            {weather.main.temp_min}
                             <sup>&deg;</sup>
                         </div>
                     </div>
@@ -61,19 +57,19 @@ export const WeatherSearchResult: React.FC<PropsType> = (props) => {
                         <div>
                             <HumidityIcon /> Humidity
                         </div>
-                        <span>22%</span>
+                        <span>{weather.main.humidity}%</span>
                     </div>
                     <div className="weather-info-row">
                         <div>
                             <WindIcon /> Wind
                         </div>
-                        <span>3 kph</span>
+                        <span>{weather.wind.speed} kph</span>
                     </div>
                     <div className="weather-info-row">
                         <div>
                             <PressureIcon /> Pressure
                         </div>
-                        <span>333 hPa</span>
+                        <span>{weather.main.pressure} hPa</span>
                     </div>
                 </div>
             </div>
