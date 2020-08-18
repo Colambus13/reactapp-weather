@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from "react";
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from "react-redux";
+import store from "./redux/redux-store";
+import { Switch, Route } from 'react-router-dom';
+import WeatherSearchContainer from './components/WeatherSearch/WeatherSearchContainer';
+import Header from "./components/Header/Header";
+import { Container } from "@material-ui/core";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => {
+    return (
+        <Provider store={store}>
+            <BrowserRouter>
+                <div className="app-wrapper">
+                    <Header/>
+                    <Container className="app-wrapper-content" maxWidth="md">
+                        <Switch>
+                            <Route path='/' component={WeatherSearchContainer} exact />
+                        </Switch>
+                    </Container>
+                </div>
+            </BrowserRouter>
+        </Provider>
+    );
+};
 
 export default App;
