@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import { getWeatherData } from '../../redux/selectors';
 import { Button } from '@material-ui/core';
 import WeatherIcon from './WeatherIcon';
-import HighIcon from '../../assets/high-icon.svg';
-import HumidityIcon from '../../assets/humidity-icon.svg';
-import LowIcon from '../../assets/low-icon.svg';
-import PressureIcon from '../../assets/pressure-icon.svg';
-import WindIcon from '../../assets/wind-icon.svg';
+import { ReactComponent as HighIcon } from '../../assets/high-icon.svg';
+import { ReactComponent as HumidityIcon } from '../../assets/humidity-icon.svg';
+import { ReactComponent as LowIcon } from '../../assets/low-icon.svg';
+import { ReactComponent as PressureIcon } from '../../assets/pressure-icon.svg';
+import { ReactComponent as WindIcon } from '../../assets/wind-icon.svg';
 
 import './WeatherSearchResult.css';
 
@@ -47,31 +47,31 @@ export const WeatherSearchResult: React.FC<PropsType> = (props) => {
                     </div>
                     <div className="weather-highlow-container">
                         <div className="weather-degree">
-                            <img src={HighIcon} alt="high-icon"/>
+                            <HighIcon />
                             17
                             <sup>&deg;</sup>
                         </div>
                         <div className="weather-degree">
-                            <img src={LowIcon} alt="low-icon"/>
+                            <LowIcon />
                             17
                             <sup>&deg;</sup>
                         </div>
                     </div>
                     <div className="weather-info-row">
                         <div>
-                            <img src={HumidityIcon} alt="humidity-icon"/> Humidity
+                            <HumidityIcon /> Humidity
                         </div>
                         <span>22%</span>
                     </div>
                     <div className="weather-info-row">
                         <div>
-                            <img src={WindIcon} alt="wind-icon"/> Wind
+                            <WindIcon /> Wind
                         </div>
                         <span>3 kph</span>
                     </div>
                     <div className="weather-info-row">
                         <div>
-                            <img src={PressureIcon} alt="pressure-icon"/> Pressure
+                            <PressureIcon /> Pressure
                         </div>
                         <span>333 hPa</span>
                     </div>

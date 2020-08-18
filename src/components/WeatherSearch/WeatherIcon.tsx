@@ -1,13 +1,13 @@
 import React from 'react';
-import CloudyIcon from '../../assets/weather/cloudy.svg';
-import HazeIcon from '../../assets/weather/haze.svg';
-import HeavyRainIcon from '../../assets/weather/heavy-rain.svg';
-import PartlyCloudyIcon from '../../assets/weather/partly-cloudy.svg';
-import RainIcon from '../../assets/weather/rain.svg';
-import SleetIcon from '../../assets/weather/sleet.svg';
-import SnowIcon from '../../assets/weather/snow.svg';
-import SunnyIcon from '../../assets/weather/sunny.svg';
-import ThunderstormIcon from '../../assets/weather/thunderstorm.svg';
+import { ReactComponent as CloudyIcon } from '../../assets/weather/cloudy.svg';
+import { ReactComponent as HazeIcon } from '../../assets/weather/haze.svg';
+import { ReactComponent as HeavyRainIcon } from '../../assets/weather/heavy-rain.svg';
+import { ReactComponent as PartlyCloudyIcon } from '../../assets/weather/partly-cloudy.svg';
+import { ReactComponent as RainIcon } from '../../assets/weather/rain.svg';
+import { ReactComponent as SleetIcon } from '../../assets/weather/sleet.svg';
+import { ReactComponent as SnowIcon } from '../../assets/weather/snow.svg';
+import { ReactComponent as SunnyIcon } from '../../assets/weather/sunny.svg';
+import { ReactComponent as ThunderstormIcon } from '../../assets/weather/thunderstorm.svg';
 
 interface IWeatherIconProps {
   code: number;
@@ -15,7 +15,7 @@ interface IWeatherIconProps {
 }
 
 const WeatherIcon: React.FC<IWeatherIconProps> = (props) => {
-  let Icon: string;
+  let Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 
   switch (props.code) {
     //Clear
@@ -110,7 +110,7 @@ const WeatherIcon: React.FC<IWeatherIconProps> = (props) => {
     default:
       Icon = SunnyIcon;
   }
-  return <img src={Icon} style={ props.big ? { width: '100px', height: '100px' } : {} } />;
+  return props.big ? <Icon style={{ width: '100px', height: '100px' }} /> : <Icon />;
 };
 
 export default WeatherIcon;
