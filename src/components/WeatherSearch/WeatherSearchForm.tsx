@@ -33,16 +33,16 @@ export const WeatherSearchForm: React.FC<PropsType> = React.memo((props) => {
                     <Autocomplete 
                         freeSolo
                         options={getFoundWeatherHistory()}
+                        className="weather-search-input"
                         renderInput={(params) => (
                             <TextField
                                 {...params}
-                                margin="normal"
                                 required
+                                autoFocus
+                                margin="normal"
                                 label="City name..."
                                 name="city_name"
                                 onChange={handleCityNameChange}
-                                autoFocus
-                                className="weather-search-input"
                             />
                         )}
                     />
