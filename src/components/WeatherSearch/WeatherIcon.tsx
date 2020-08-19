@@ -110,7 +110,7 @@ const WeatherIcon: React.FC<IWeatherIconProps> = (props) => {
     default:
       Icon = SunnyIcon;
   }
-  return props.big ? <Icon style={{ width: '100px', height: '100px' }} /> : <Icon />;
+  return <Icon style={props.big ? { width: '100px', height: '100px' } : {}} />;
 };
 
 export default WeatherIcon;
