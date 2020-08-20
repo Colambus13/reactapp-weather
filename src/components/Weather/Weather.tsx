@@ -1,12 +1,12 @@
 import React from 'react';
 import WeatherIcon from './WeatherIcon';
+import { Typography, CssBaseline } from '@material-ui/core';
 import { ReactComponent as HighIcon } from '../../assets/images/high-icon.svg';
 import { ReactComponent as HumidityIcon } from '../../assets/images/humidity-icon.svg';
 import { ReactComponent as LowIcon } from '../../assets/images/low-icon.svg';
 import { ReactComponent as PressureIcon } from '../../assets/images/pressure-icon.svg';
 import { ReactComponent as WindIcon } from '../../assets/images/wind-icon.svg';
 import { WeatherType } from '../../types/types';
-import './WeatherSearchResult.css';
 
 type PropsType = {
     weather: WeatherType | null
@@ -20,9 +20,10 @@ const Weather: React.FC<PropsType> = ({weather}) => {
 
     return (
         <div className="weather-wrapper">
+            <CssBaseline />
             <div className="weather-container">
                 <div className="weather-main">
-                    <h5>{weather.name}</h5>
+                    <Typography variant="h6" className='weather-city-name'>{weather.name}</Typography>
                     <div style={{ display: 'flex' }}>
                         <WeatherIcon code={weather.weather.id} big />
                         <span>
@@ -30,14 +31,11 @@ const Weather: React.FC<PropsType> = ({weather}) => {
                             <sup>&deg;</sup>
                         </span>
                     </div>
-                    <h6>{weather.weather.description}</h6>
+                    <Typography variant="h6" className='weather-desc'>{weather.weather.description}</Typography>
                 </div>
 
                 <div className="weather-additional">
-                    <div className="weather-feels-like">
-                        Feels like {weather.main.feels_like.toFixed(1)}
-                        <sup>&deg;</sup>
-                    </div>
+                    <Typography variant="h5" className="weather-feels-like">Feels like {weather.main.feels_like.toFixed(1)}<sup>&deg;</sup></Typography>
                     <div className="weather-highlow-container">
                         <div className="weather-degree">
                             <HighIcon />

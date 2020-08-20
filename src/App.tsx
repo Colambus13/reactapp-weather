@@ -4,19 +4,29 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import store from "./redux/redux-store";
 import WeatherContainer from './components/Weather/WeatherContainer';
 import Header from "./components/Header/Header";
-import { Container } from "@material-ui/core";
-import './App.css';
+import { Container, ThemeProvider, createMuiTheme } from "@material-ui/core";
+import './assets/styles/global.scss';
 
 const App: React.FC = () => {
+
+    const visuallyImpairedTheme = createMuiTheme({
+        typography: {
+            //fontSize: 14,
+            // 14, 20
+        }
+    });
+
     return (
         <Provider store={store}>
             <BrowserRouter>
-                <Header/>
-                <Container className="app-content" maxWidth="md">
-                    <Switch>
-                        <Route path='/' component={WeatherContainer} exact />
-                    </Switch>
-                </Container>
+                <ThemeProvider theme={visuallyImpairedTheme}>
+                    <Header />
+                    <Container className="app-content" maxWidth="md">
+                        <Switch>
+                            <Route path='/' component={WeatherContainer} exact />
+                        </Switch>
+                    </Container>
+                </ThemeProvider>
             </BrowserRouter>
         </Provider>
     );

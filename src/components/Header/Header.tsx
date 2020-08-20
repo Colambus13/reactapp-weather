@@ -1,7 +1,6 @@
 import React from 'react';
 import { AppBar, IconButton, Typography, Tooltip, Toolbar  } from '@material-ui/core';
 import { Cloud as CloudIcon, Visibility as VisibilityIcon } from '@material-ui/icons';
-import './Header.css';
 
 const Header: React.FC = () => {
     return (

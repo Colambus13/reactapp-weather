@@ -1,0 +1,21 @@
+@import 'variables';
+@import './weather/search';
+@import './weather/weather';
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: $block-background;
+}
+
+.app-content {
+	padding: 64px 0px 48px;
+}
+
+.logo-icon {
+	margin-right: 16px;
+}
+
+.grow {
+	flex-grow: 1;
+}

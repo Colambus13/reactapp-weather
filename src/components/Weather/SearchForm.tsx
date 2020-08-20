@@ -3,7 +3,6 @@ import { Typography, TextField, Button, Box } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import { Search as SearchIcon } from '@material-ui/icons';
 import { addToFoundWeatherHistory, getFoundWeatherHistory } from '../../utils/foundWeatherHistory';
-import './WeatherSearch.css';
 
 type PropsType = {
     searchWeather: (value: string) => void
