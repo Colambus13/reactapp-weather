@@ -1,13 +1,13 @@
 import React from 'react';
-import { ReactComponent as CloudyIcon } from '../../assets/weather/cloudy.svg';
-import { ReactComponent as HazeIcon } from '../../assets/weather/haze.svg';
-import { ReactComponent as HeavyRainIcon } from '../../assets/weather/heavy-rain.svg';
-import { ReactComponent as PartlyCloudyIcon } from '../../assets/weather/partly-cloudy.svg';
-import { ReactComponent as RainIcon } from '../../assets/weather/rain.svg';
-import { ReactComponent as SleetIcon } from '../../assets/weather/sleet.svg';
-import { ReactComponent as SnowIcon } from '../../assets/weather/snow.svg';
-import { ReactComponent as SunnyIcon } from '../../assets/weather/sunny.svg';
-import { ReactComponent as ThunderstormIcon } from '../../assets/weather/thunderstorm.svg';
+import { ReactComponent as CloudyIcon } from '../../assets/images/weather/cloudy.svg';
+import { ReactComponent as HazeIcon } from '../../assets/images/weather/haze.svg';
+import { ReactComponent as HeavyRainIcon } from '../../assets/images/weather/heavy-rain.svg';
+import { ReactComponent as PartlyCloudyIcon } from '../../assets/images/weather/partly-cloudy.svg';
+import { ReactComponent as RainIcon } from '../../assets/images/weather/rain.svg';
+import { ReactComponent as SleetIcon } from '../../assets/images/weather/sleet.svg';
+import { ReactComponent as SnowIcon } from '../../assets/images/weather/snow.svg';
+import { ReactComponent as SunnyIcon } from '../../assets/images/weather/sunny.svg';
+import { ReactComponent as ThunderstormIcon } from '../../assets/images/weather/thunderstorm.svg';
 
 type PropsType = {
 	code: number;

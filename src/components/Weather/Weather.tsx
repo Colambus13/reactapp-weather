@@ -1,10 +1,10 @@
 import React from 'react';
 import WeatherIcon from './WeatherIcon';
-import { ReactComponent as HighIcon } from '../../assets/high-icon.svg';
-import { ReactComponent as HumidityIcon } from '../../assets/humidity-icon.svg';
-import { ReactComponent as LowIcon } from '../../assets/low-icon.svg';
-import { ReactComponent as PressureIcon } from '../../assets/pressure-icon.svg';
-import { ReactComponent as WindIcon } from '../../assets/wind-icon.svg';
+import { ReactComponent as HighIcon } from '../../assets/images/high-icon.svg';
+import { ReactComponent as HumidityIcon } from '../../assets/images/humidity-icon.svg';
+import { ReactComponent as LowIcon } from '../../assets/images/low-icon.svg';
+import { ReactComponent as PressureIcon } from '../../assets/images/pressure-icon.svg';
+import { ReactComponent as WindIcon } from '../../assets/images/wind-icon.svg';
 
 import './WeatherSearchResult.css';
 
