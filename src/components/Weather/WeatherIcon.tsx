@@ -14,7 +14,7 @@ type PropsType = {
 	big?: boolean;
 }
 
-const WeatherIcon: React.FC<PropsType> = ({code, big}) => {
+const WeatherIcon: React.FC<PropsType> = ({ code, big }) => {
 	let Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 	switch (code) {
 		//Clear

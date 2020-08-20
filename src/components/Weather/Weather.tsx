@@ -1,6 +1,6 @@
 import React from 'react';
 import WeatherIcon from './WeatherIcon';
-import { Typography, CssBaseline } from '@material-ui/core';
+import { Typography, CssBaseline, LinearProgress } from '@material-ui/core';
 import { ReactComponent as HighIcon } from '../../assets/images/high-icon.svg';
 import { ReactComponent as HumidityIcon } from '../../assets/images/humidity-icon.svg';
 import { ReactComponent as LowIcon } from '../../assets/images/low-icon.svg';
@@ -9,29 +9,29 @@ import { ReactComponent as WindIcon } from '../../assets/images/wind-icon.svg';
 import { WeatherType } from '../../types/types';
 
 type PropsType = {
-    weather: WeatherType | null
+    weather: WeatherType | null,
+    isInitialized: boolean
 }
 
-const Weather: React.FC<PropsType> = ({weather}) => {
-
-    if (!weather) {
-        return <></>;
+const Weather: React.FC<PropsType> = ({weather, isInitialized}) => {
+    if (isInitialized) {
+        return <LinearProgress />
     }
-
-    return (
+    
+    return !weather ? <></> : (
         <div className="weather-wrapper">
             <CssBaseline />
             <div className="weather-container">
                 <div className="weather-main">
                     <Typography variant="h6" className='weather-city-name'>{weather.name}</Typography>
                     <div style={{ display: 'flex' }}>
-                        <WeatherIcon code={weather.weather.id} big />
+                        <WeatherIcon code={weather.weather[0].id} big />
                         <span>
-                            {weather.main.temp}
+                            {weather.main.temp.toFixed(0)}
                             <sup>&deg;</sup>
                         </span>
                     </div>
-                    <Typography variant="h6" className='weather-desc'>{weather.weather.description}</Typography>
+                    <Typography variant="h6" className='weather-desc'>{weather.weather[0].description}</Typography>
                 </div>
 
                 <div className="weather-additional">
@@ -39,12 +39,12 @@ const Weather: React.FC<PropsType> = ({weather}) => {
                     <div className="weather-highlow-container">
                         <div className="weather-degree">
                             <HighIcon />
-                            {weather.main.temp_max}
+                            {weather.main.temp_max.toFixed(0)}
                             <sup>&deg;</sup>
                         </div>
                         <div className="weather-degree">
                             <LowIcon />
-                            {weather.main.temp_min}
+                            {weather.main.temp_min.toFixed(0)}
                             <sup>&deg;</sup>
                         </div>
                     </div>

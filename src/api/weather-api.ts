@@ -14,11 +14,7 @@ const objectToQueryString = (obj: object) => {
 export const request = (method: RequestMethods, baseUrl: string, data?: object) => {
     let url: string = baseUrl;
     let options: RequestInit = {
-        method,
-        headers: {
-            'X-Requested-With': 'XMLHttpRequest',
-            'Content-Type': 'application/json'
-        }
+        method
     };
 
     if (data) {

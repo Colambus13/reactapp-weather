@@ -1,10 +1,10 @@
 export type WeatherType = {
-    weather: {
+    weather: Array<{
         id: number;
         main: string;
         description: string;
         icon: string;
-    };
+    }>,
     main: {
         temp: number;
         feels_like: number;
@@ -24,3 +24,10 @@ export type WeatherType = {
     };
     name: string;
 };
+
+export type WeatherErrorType = {
+    cod: string,
+    message: string
+};
+
+export const isWeatherType = (obj: any): obj is WeatherType => 'weather' in obj;

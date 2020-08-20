@@ -16,14 +16,15 @@ const WeatherContainer: React.FC<MapPropsType & DispatchPropsType> = (props) => 
     return (
         <>
             <SearchForm searchWeather={props.searchWeather} />
-            <Weather weather={props.weather} />
+            <Weather weather={props.weather} isInitialized={props.isInitialized} />
         </>
     );
 };
 
 let mapStateToProps = (state: AppStateType) => {
     return ({
-        weather: state.weatherPage.weather
+        weather: state.weatherPage.weather,
+        isInitialized: state.weatherPage.isInitialized
     });
 }
 

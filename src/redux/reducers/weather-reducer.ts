@@ -1,19 +1,30 @@
 import { InferActionsTypes, BaseThunkType } from "../redux-store";
 import { request as requestWeather, RequestMethods } from "../../api/weather-api";
-import { WeatherType } from "../../types/types";
+import { WeatherType, WeatherErrorType, isWeatherType } from "../../types/types";
 
 let initialState = {
-    weather: null as WeatherType | null
+    weather: null as WeatherType | null,
+    isInitialized: false
 };
 
 const weatherReducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
+        case 'SEARCH_WEATHER_START':
+            return {
+                ...state,
+                isInitialized: true
+            }
         case 'SEARCH_WEATHER_SUCCESS':
             return {
                 ...state,
-                weather: action.weatherData
+                weather: action.weatherData,
+                isInitialized: false
             }
         case 'SEARCH_WEATHER_FAILURE':
+            return {
+                ...state,
+                isInitialized: false
+            }
         default:
             return state;
     }
@@ -28,8 +39,15 @@ export const actions = {
 export const searchWeather = (value: string): ThunkType => (dispatch) => {
     dispatch(actions.searchWeatherStart());
 
-    requestWeather(RequestMethods.GET, 'https://run.mocky.io/v3/3b956837-a443-4b7c-9212-1dbae7ba760f', { value })
-        .then((data: WeatherType) => {
+    requestWeather(
+        RequestMethods.GET, 
+        'https://api.openweathermap.org/data/2.5/weather', 
+        { q: value, units: 'metric', appid: process.env.REACT_APP_WEATHER_API_KEY }
+    )
+        .then((data: WeatherType | WeatherErrorType) => {
+            if (!isWeatherType(data)) {
+                throw new Error(data.message);
+            }
             dispatch(actions.searchWeatherSuccess(data));
         })
         .catch((err: object) => {

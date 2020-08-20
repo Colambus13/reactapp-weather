@@ -1,9 +1,11 @@
 import {Action, applyMiddleware, combineReducers, compose, createStore} from "redux";
 import thunkMiddleware, { ThunkAction } from "redux-thunk";
 import weatherReducer from "./reducers/weather-reducer";
+import appReducer from "./reducers/app-reducers";
 
 let rootReducer = combineReducers({
-    weatherPage: weatherReducer
+    weatherPage: weatherReducer,
+    app: appReducer
 });
 
 type RootReducerType = typeof rootReducer;
