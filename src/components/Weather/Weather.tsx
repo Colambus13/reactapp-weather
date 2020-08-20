@@ -5,11 +5,11 @@ import { ReactComponent as HumidityIcon } from '../../assets/images/humidity-ico
 import { ReactComponent as LowIcon } from '../../assets/images/low-icon.svg';
 import { ReactComponent as PressureIcon } from '../../assets/images/pressure-icon.svg';
 import { ReactComponent as WindIcon } from '../../assets/images/wind-icon.svg';
-
+import { WeatherType } from '../../types/types';
 import './WeatherSearchResult.css';
 
 type PropsType = {
-    weather: any | null
+    weather: WeatherType | null
 }
 
 const Weather: React.FC<PropsType> = ({weather}) => {
