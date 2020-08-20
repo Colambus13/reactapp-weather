@@ -7,14 +7,14 @@ import './WeatherSearch.css';
 
 type PropsType = {
     searchWeather: (value: string) => void
-};
+}
 
-export const WeatherSearchForm: React.FC<PropsType> = React.memo((props) => {
+const SearchForm: React.FC<PropsType> = ({ searchWeather }) => {
     const [searchValue, setSearchValue] = useState('');
 
     const handleSubmit = (event: React.FormEvent): void => {
         event.preventDefault();
-        props.searchWeather(searchValue);
+        searchWeather(searchValue);
         addToFoundWeatherHistory(searchValue);
     }
 
@@ -23,14 +23,14 @@ export const WeatherSearchForm: React.FC<PropsType> = React.memo((props) => {
     }
 
     return (
-        <div>
+        <>
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
                 Find your city weather
             </Typography>
 
             <form onSubmit={handleSubmit}>
                 <div className='weather-search-fields'>
-                    <Autocomplete 
+                    <Autocomplete
                         freeSolo
                         options={getFoundWeatherHistory()}
                         className="weather-search-input"
@@ -53,6 +53,8 @@ export const WeatherSearchForm: React.FC<PropsType> = React.memo((props) => {
                     </Box>
                 </div>
             </form>
-        </div>
+        </>
     );
-});
+};
+
+export default SearchForm;

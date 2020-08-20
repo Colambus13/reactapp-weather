@@ -1,6 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { getWeatherData } from '../../redux/selectors';
 import WeatherIcon from './WeatherIcon';
 import { ReactComponent as HighIcon } from '../../assets/high-icon.svg';
 import { ReactComponent as HumidityIcon } from '../../assets/humidity-icon.svg';
@@ -12,10 +10,9 @@ import './WeatherSearchResult.css';
 
 type PropsType = {
     weather: any | null
-};
+}
 
-export const WeatherSearchResult: React.FC<PropsType> = (props) => {
-    const weather = useSelector(getWeatherData);
+const Weather: React.FC<PropsType> = ({weather}) => {
 
     if (!weather) {
         return <></>;
@@ -38,7 +35,7 @@ export const WeatherSearchResult: React.FC<PropsType> = (props) => {
 
                 <div className="weather-additional">
                     <div className="weather-feels-like">
-                        Feels like {weather.main.feels_like}
+                        Feels like {weather.main.feels_like.toFixed(1)}
                         <sup>&deg;</sup>
                     </div>
                     <div className="weather-highlow-container">
@@ -76,3 +73,5 @@ export const WeatherSearchResult: React.FC<PropsType> = (props) => {
         </div>
     );
 };
+
+export default Weather;
